@@ -22,7 +22,7 @@ import TrustedServers from "terriajs-cesium/Source/Core/TrustedServers";
 import loadPlugins from "./lib/Core/loadPlugins";
 import plugins from "./plugins";
 
-TrustedServers.add("insitu.adias.aquawatchaus.space","443")
+TrustedServers.add("insitu.adias.aquawatchaus.space", "443");
 
 // Register all types of catalog members in the core TerriaJS.  If you only want to register a subset of them
 // (i.e. to reduce the size of your application if you don't actually use them all), feel free to copy a subset of
@@ -110,7 +110,16 @@ module.exports = terria
           ) {
             message += require("./lib/Views/DevelopmentDisclaimerPreamble.html");
           }
-          message += require("./lib/Views/GlobalDisclaimer.html");
+
+          if (defined(globalDisclaimer.dynamic)) {
+            var protocol = window.location.protocol;
+            message += require(protocol +
+              "//" +
+              hostname +
+              "/GlobalDisclaimer.html");
+          } else {
+            message += require("./lib/Views/GlobalDisclaimer.html");
+          }
 
           var options = {
             title:
