@@ -116,7 +116,7 @@ module.exports = terria
             message += require(protocol +
               "//" +
               hostname +
-              "/GlobalDisclaimer.html");
+              "/init/GlobalDisclaimer.html");
           } else {
             message += require("./lib/Views/GlobalDisclaimer.html");
           }
