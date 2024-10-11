@@ -113,10 +113,19 @@ module.exports = terria
 
           if (defined(globalDisclaimer.dynamic)) {
             var protocol = window.location.protocol;
-            message += require(protocol +
+            var port = window.location.port;
+            const url =
+              protocol +
               "//" +
               hostname +
-              "/init/GlobalDisclaimer.html");
+              ":" +
+              port +
+              "/init/GlobalDisclaimer.html";
+            fetch(url)
+              .then((response) => response.text())
+              .then((text) => {
+                message += text;
+              });
           } else {
             message += require("./lib/Views/GlobalDisclaimer.html");
           }
