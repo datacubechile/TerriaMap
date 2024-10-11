@@ -112,20 +112,8 @@ module.exports = terria
           }
 
           if (defined(globalDisclaimer.dynamic)) {
-            var protocol = window.location.protocol;
-            var port = window.location.port;
-            const url =
-              protocol +
-              "//" +
-              hostname +
-              ":" +
-              port +
-              "/init/GlobalDisclaimer.html";
-            fetch(url)
-              .then((response) => response.text())
-              .then((text) => {
-                message += text;
-              });
+            // If the disclaimer is dynamic, then we'll just include whatever is in the config file.
+            message += globalDisclaimer.dynamic;
           } else {
             message += require("./lib/Views/GlobalDisclaimer.html");
           }
