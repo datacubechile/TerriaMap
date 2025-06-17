@@ -36,7 +36,8 @@
     "underscore": "^1.12.1",
     "@types/react": "^17.0.3",
     "@types/lodash": "4.14.182",
-    "@types/css-font-loading-module": "^0.0.13"
+    "@types/css-font-loading-module": "^0.0.13",
+    "@types/node": "^22.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
